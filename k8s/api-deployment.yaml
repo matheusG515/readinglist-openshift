@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: docker.io/matheus515/readinglist:latest  # <-- updated by CI
+          image: docker.io/matheus515/readinglist:94b44b19d4fcb2be5d4361e946205b34ec343c26
           imagePullPolicy: Always
           envFrom:
             - configMapRef:

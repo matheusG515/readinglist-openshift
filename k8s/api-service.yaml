@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: readinglist-api
+  namespace: matheus515-dev
+spec:
+  selector:
+    app: readinglist-api
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+  type: ClusterIP

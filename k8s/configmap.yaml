@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: readinglist-config
+  namespace: matheus515-dev
+data:
+  DB_HOST: "postgres"
+  DB_NAME: "readinglist"
+  DB_USER: "readinglist"
+  DB_PORT: "5432"

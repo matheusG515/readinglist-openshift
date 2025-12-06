@@ -1,7 +1,8 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import sessionmaker, declarative_base
 import os
+
 
 DB_USER = os.getenv("DB_USER", "readinglist")
 DB_PASSWORD = os.getenv("DB_PASSWORD", "changeme")
@@ -31,12 +32,13 @@ def init_db():
 # Initialize DB at import time (once per process)
 init_db()
 
+@app.route("/")
+def index():
+    return render_template("index.html")
+
 @app.route("/healthz")
 def health():
     return {"status": "ok"}
-
-# ... rest of your routes ...
-
 
 @app.route("/books", methods=["GET"])
 def list_books():

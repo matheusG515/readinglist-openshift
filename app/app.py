@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 import os
 
 DB_USER = os.getenv("DB_USER", "readinglist")
-DB_PASSWORD = os.getenv("DB_PASSWORD", "changeme")
+DB_PASSWORD = os.getenv("DB_PASSWORD", "supersecurepassword")
 DB_NAME = os.getenv("DB_NAME", "readinglist")
 DB_HOST = os.getenv("DB_HOST", "postgres")
 DB_PORT = os.getenv("DB_PORT", "5432")

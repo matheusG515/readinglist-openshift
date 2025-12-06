@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: postgres
-          image: bitnami/postgresql:16
+          image: bitnami/postgresql:sha256-74db3d575a9c104f7d73e214edccbb9c0754be908c8cecd31562ac7b945ae248
           env:
             - name: POSTGRESQL_DATABASE
               valueFrom:

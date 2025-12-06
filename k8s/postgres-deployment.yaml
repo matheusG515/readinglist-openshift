@@ -15,19 +15,19 @@ spec:
     spec:
       containers:
         - name: postgres
-          image: bitnami/postgresql:sha256-74db3d575a9c104f7d73e214edccbb9c0754be908c8cecd31562ac7b945ae248
+          image: postgres:16
           env:
-            - name: POSTGRESQL_DATABASE
+            - name: POSTGRES_DB
               valueFrom:
                 configMapKeyRef:
                   name: readinglist-config
                   key: DB_NAME
-            - name: POSTGRESQL_USERNAME
+            - name: POSTGRES_USER
               valueFrom:
                 configMapKeyRef:
                   name: readinglist-config
                   key: DB_USER
-            - name: POSTGRESQL_PASSWORD
+            - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: readinglist-secret
@@ -36,8 +36,7 @@ spec:
             - containerPort: 5432
           volumeMounts:
             - name: data
-              mountPath: /bitnami/postgresql
+              mountPath: /var/lib/postgresql/data
       volumes:
         - name: data
-          persistentVolumeClaim:
-            claimName: postgres-pvc
+          emptyDir: {}

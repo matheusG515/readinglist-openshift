@@ -1,10 +1,10 @@
 from flask import Flask, request, jsonify
-from sqlalchemy import create_engine, Column, Integer, String, Boolean
+from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import sessionmaker, declarative_base
 import os
 
 DB_USER = os.getenv("DB_USER", "readinglist")
-DB_PASSWORD = os.getenv("DB_PASSWORD", "supersecurepassword")
+DB_PASSWORD = os.getenv("DB_PASSWORD", "changeme")
 DB_NAME = os.getenv("DB_NAME", "readinglist")
 DB_HOST = os.getenv("DB_HOST", "postgres")
 DB_PORT = os.getenv("DB_PORT", "5432")
@@ -24,13 +24,19 @@ class Book(Base):
 
 app = Flask(__name__)
 
-@app.before_first_request
 def init_db():
+    # Create tables if they don't exist
     Base.metadata.create_all(bind=engine)
+
+# Initialize DB at import time (once per process)
+init_db()
 
 @app.route("/healthz")
 def health():
     return {"status": "ok"}
+
+# ... rest of your routes ...
+
 
 @app.route("/books", methods=["GET"])
 def list_books():

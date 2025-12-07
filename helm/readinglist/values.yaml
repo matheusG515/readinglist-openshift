@@ -1,0 +1,29 @@
+replicaCount: 2
+
+image:
+  repository: docker.io/matheus515/readinglist
+  tag: "latest"
+  pullPolicy: Always
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 300m
+    memory: 256Mi
+
+config:
+  dbHost: "postgres"        # uses your existing postgres Service
+  dbName: "readinglist"
+  dbUser: "readinglist"
+  dbPort: "5432"
+  appEnv: "sandbox"
+  banner: "Reading List (Helm release)"
+
+secret:
+  dbPassword: "supersecurepassword"   # match what Postgres expects
+
+route:
+  enabled: true
+  host: ""        # let OpenShift generate a host

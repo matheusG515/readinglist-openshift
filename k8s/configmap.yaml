@@ -8,3 +8,5 @@ data:
   DB_NAME: "readinglist"
   DB_USER: "readinglist"
   DB_PORT: "5432"
+  APP_ENV: "raw-deployment"
+  BANNER_MESSAGE: "Reading List – Raw Deployment"

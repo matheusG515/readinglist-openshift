@@ -18,7 +18,7 @@ config:
   dbName: "readinglist"
   dbUser: "readinglist"
   dbPort: "5432"
-  appEnv: "sandbox"
+  appEnv: "helm-demo"
   banner: "Reading List (Helm release)"
 
 secret:

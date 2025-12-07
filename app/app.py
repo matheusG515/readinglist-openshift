@@ -34,7 +34,9 @@ init_db()
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    banner = os.getenv("BANNER_MESSAGE", "")
+    env = os.getenv("APP_ENV", "unknown")
+    return render_template("index.html", banner=banner, env=env)
 
 @app.route("/config")
 def config():

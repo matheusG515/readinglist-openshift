@@ -36,6 +36,13 @@ init_db()
 def index():
     return render_template("index.html")
 
+@app.route("/config")
+def config():
+    return {
+        "banner": os.getenv("BANNER_MESSAGE", ""),
+        "env": os.getenv("APP_ENV", "unknown")
+    }
+
 @app.route("/healthz")
 def health():
     return {"status": "ok"}

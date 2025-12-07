@@ -36,6 +36,7 @@
 </head>
 <body>
     <h1>My Reading List</h1>
+    <h2 id="banner" style="color: #666;"></h2>
 
     <form id="bookForm">
         <input type="text" id="title" placeholder="Book Title" required />
@@ -61,6 +62,14 @@
 
     <script>
         const baseUrl = window.location.origin;
+
+        async function loadConfig() {
+            const res = await fetch(`${baseUrl}/config`);
+            const cfg = await res.json();
+            if (cfg.banner) {
+                document.getElementById("banner").innerText = cfg.banner;
+            }
+        }
 
         async function loadBooks() {
             const res = await fetch(`${baseUrl}/books`);
@@ -96,6 +105,7 @@
             await loadBooks();
         });
 
+        loadConfig();
         loadBooks();
     </script>
 </body>

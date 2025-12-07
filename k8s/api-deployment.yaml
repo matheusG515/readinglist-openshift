@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: docker.io/matheus515/readinglist:c8a2364be53fcf90297754786845c9d94c542c72
+          image: docker.io/matheus515/readinglist:9bda5292ec81f13c8f876343a5007cf9b76cb75b
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
